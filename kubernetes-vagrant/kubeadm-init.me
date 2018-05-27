@@ -5,3 +5,7 @@ ipaddress=$(ifconfig enp0s9 | sed -n '/inet addr/s/.*inet addr: *\([^[:space:]]\
 #Initializing 'kubeadm'
 
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$ipaddress
+
+
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
