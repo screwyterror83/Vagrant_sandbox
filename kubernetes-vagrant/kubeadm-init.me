@@ -1,4 +1,3 @@
-#!/bin/bash
 
 #IP address set up during init process for hostonly network.
 ipaddress=$(ifconfig enp0s9 | sed -n '/inet addr/s/.*inet addr: *\([^[:space:]]\+\).*/\1/p')
