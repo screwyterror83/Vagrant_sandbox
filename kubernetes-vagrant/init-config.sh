@@ -4,7 +4,7 @@
 sudo apt-get -y update
 
 #Install vim 
-sudo apt-get install -y vim tree 
+sudo apt-get install -y vim tree golang-go
 
 #turn off swap
 swapoff -a
@@ -37,5 +37,7 @@ EOF
 apt-get update
 
 apt-get install -y kubelet kubeadm kubectl
+
+go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
 
 
