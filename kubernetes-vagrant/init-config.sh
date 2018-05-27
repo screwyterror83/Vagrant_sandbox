@@ -38,6 +38,17 @@ apt-get update
 
 apt-get install -y kubelet kubeadm kubectl
 
+#Getting 'crictl' for kubernetes dependency
+
+mkdir ~/golang/gocode
+
+cp ~/.bashrc ~/.bashrc.bak
+
+echo "export GOPATH=~/golang/gocode " >> ~/.bashrc
+
+source ~/.bashrc
+
+
 go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
 
 
