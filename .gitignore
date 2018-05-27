@@ -1,0 +1,4 @@
+#ignore .vagrant files
+kubernetes-vagrant/.vagrant
+kubernetes-vagrant/.vagrant/*
+
