@@ -27,7 +27,7 @@ echo $ipaddress
 
 #Initializing 'kubeadm'
 echo "Initializing 'kubeadm'"
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$ipaddress
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$ipaddress > $HOME/kubeadmin-init.log 2>&1
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
