@@ -39,8 +39,7 @@ source ~/.profile
 
 #Install 'kubeadm' 'kubelet' and 'kubectl'
 echo "Install 'kubeadm' 'kubelet' and 'kubectl'"
-apt-get update && apt-get install -y apt-transport-https curl
-
+apt-get update 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
