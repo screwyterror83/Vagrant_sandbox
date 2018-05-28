@@ -35,4 +35,11 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
 
+#Wait a little longer so we can check the kube service status
+echo "We have finished configure kubeadmin service"
+echo "Let's wait for a minute until services are online."
+echo "This process could take few minutes"
+
+sleep 2m
+
 kubectl get pods --all-namespaces
