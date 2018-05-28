@@ -24,19 +24,6 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 apt-get update -y
 apt-get install -y docker-ce=17.03.2~ce-0~ubuntu-xenial
 
-#Install GoLang
-echo "Installing GoLang for Kubernetes Config"
-wget https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz
-
-sudo tar -xvf go1.10.1.linux-amd64.tar.gz
-sudo mv go /usr/local
-
-echo "export GOROOT=/usr/local/go" >> ~/.profile
-echo "export GOPATH=$HOME/golang/gocode " >> ~/.profile
-echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.profile
-
-source ~/.profile
-
 #Install 'kubeadm' 'kubelet' and 'kubectl'
 echo "Install 'kubeadm' 'kubelet' and 'kubectl'"
 apt-get update 
@@ -49,8 +36,22 @@ apt-get update
 
 apt-get install -y kubelet kubeadm kubectl
 
+#Install GoLang
+#echo "Installing GoLang for Kubernetes Config"
+#wget https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz
+
+#sudo tar -xvf go1.10.1.linux-amd64.tar.gz
+#sudo mv go /usr/local
+
+#echo "export GOROOT=/usr/local/go" >> ~/.profile
+#echo "export GOPATH=$HOME/golang/gocode " >> ~/.profile
+#echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.profile
+
+#source ~/.profile
+
+
 #Getting 'crictl' for kubernetes dependency
 
-go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
+#go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
 
 
