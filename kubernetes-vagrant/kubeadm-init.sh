@@ -1,6 +1,5 @@
+#!/bin/bash
 
-#IP address set up during init process for hostonly network.
-ipaddress=$(ifconfig enp0s9 | sed -n '/inet addr/s/.*inet addr: *\([^[:space:]]\+\).*/\1/p')
 
 #Install GoLang
 #echo "Installing GoLang for Kubernetes Config"
@@ -19,6 +18,12 @@ ipaddress=$(ifconfig enp0s9 | sed -n '/inet addr/s/.*inet addr: *\([^[:space:]]\
 #Getting 'crictl' for kubernetes dependency
 
 #go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
+
+#IP address set up during init process for hostonly network.
+echo "Getting APIServer IP address from host"
+ipaddress=$(ifconfig enp0s9 | sed -n '/inet addr/s/.*inet addr: *\([^[:space:]]\+\).*/\1/p')
+
+echo $ipaddress
 
 #Initializing 'kubeadm'
 echo "Initializing 'kubeadm'"
