@@ -33,6 +33,7 @@ sudo mv go /usr/local
 
 echo "export GOROOT=/usr/local/go" >> ~/.bashrc
 echo "export GOPATH=$HOME/golang/gocode " >> ~/.bashrc
+echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.bashrc
 
 source ~/.bashrc
 
