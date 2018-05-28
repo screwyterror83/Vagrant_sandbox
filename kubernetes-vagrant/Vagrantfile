@@ -1,13 +1,16 @@
+#Define Variables can be used in vagrantfile
 BOX="ubuntu/xenial64"
 Init_Path="init-config.sh"
 
+# Setting up general vagrant parameters
 Vagrant.configure("2") do |config|
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
   config.vm.box=BOX
   config.vm.provision "general", type: "shell" do |g|
       s.path = 'init-config.sh'
   end
-  
+# Configure first nodes, the master node of kubernetes, name, network adapters and IP
+# and VM configuration of Memory and CPU, turn off Serial Ports
   config.vm.define "kube-master" do |master|
     master.vm.hostname = "kubemaster"
 
@@ -21,12 +24,15 @@ Vagrant.configure("2") do |config|
       km.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
     
+# Configure kubeadmin init in master node.    
     master.vm.provision "master",tpye: "shell" do |m|
       m.privileged = false
       m.path = "kubeadm-init.sh"
     
   end
 
+# Configure first nodes, the master node of kubernetes, name, network adapters and IP
+# and VM configuration of Memory and CPU, turn off Serial Ports   
   config.vm.define "kube-node1" do |node1|
     node1.vm.hostname = "kubenode1"
 
@@ -40,7 +46,9 @@ Vagrant.configure("2") do |config|
       kn1.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
   end
-
+  
+# Configure first nodes, the master node of kubernetes, name, network adapters and IP
+# and VM configuration of Memory and CPU, turn off Serial Ports
   config.vm.define "kube-node2" do |node2|
     node2.vm.hostname = "kubenode2"
 
