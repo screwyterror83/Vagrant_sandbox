@@ -31,11 +31,11 @@ wget https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz
 sudo tar -xvf go1.10.1.linux-amd64.tar.gz
 sudo mv go /usr/local
 
-echo "export GOROOT=/usr/local/go" >> ~/.bashrc
-echo "export GOPATH=$HOME/golang/gocode " >> ~/.bashrc
-echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.bashrc
+echo "export GOROOT=/usr/local/go" >> ~/.profile
+echo "export GOPATH=$HOME/golang/gocode " >> ~/.profile
+echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.profile
 
-source ~/.bashrc
+source ~/.profile
 
 #Install 'kubeadm' 'kubelet' and 'kubectl'
 echo "Install 'kubeadm' 'kubelet' and 'kubectl'"
