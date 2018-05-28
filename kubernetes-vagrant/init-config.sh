@@ -37,22 +37,5 @@ apt-get update -y > /dev/null 2>&1
 
 apt-get install -y kubelet kubeadm kubectl > /dev/null 2>&1
 
-#Install GoLang
-#echo "Installing GoLang for Kubernetes Config"
-#wget https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz
-
-#sudo tar -xvf go1.10.1.linux-amd64.tar.gz
-#sudo mv go /usr/local
-
-#echo "export GOROOT=/usr/local/go" >> ~/.profile
-#echo "export GOPATH=$HOME/golang/gocode " >> ~/.profile
-#echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.profile
-
-#source ~/.profile
-
-
-#Getting 'crictl' for kubernetes dependency
-
-#go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
 
 
