@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
   config.vm.box=BOX
   config.vm.provision "general", type: "shell" do |g|
-      s.path = 'init-config.sh'
+      g.path = 'init-config.sh'
   end
 # Configure first nodes, the master node of kubernetes, name, network adapters and IP
 # and VM configuration of Memory and CPU, turn off Serial Ports
