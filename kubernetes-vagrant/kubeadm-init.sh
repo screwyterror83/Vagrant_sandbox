@@ -29,6 +29,10 @@ echo $ipaddress
 echo "Initializing 'kubeadm'"
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$ipaddress > $HOME/kubeadmin-init.log 2>&1
 
+#Extracting token and certs to join nodes to kubeadmin host
+echo "Extracting token and certs"
+sed -n '/kubeadm join/,$p' kubeadmin-init.log > kube-admin-certs.txt 2>&1
+
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -40,6 +44,6 @@ echo "We have finished configure kubeadmin service"
 echo "Let's wait for a minute until services are online."
 echo "This process could take few minutes"
 
-sleep 2m
+sleep 1m
 
 kubectl get pods --all-namespaces
