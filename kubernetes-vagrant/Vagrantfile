@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "general", type:"shell" do |g|
     g.path = 'init-config.sh'
   end
- 
+
 # Configure first nodes, the master node of kubernetes, name, network adapters and IP
 # and VM configuration of Memory and CPU, turn off Serial Ports
   config.vm.define "kube-master" do |master|
@@ -24,16 +24,19 @@ Vagrant.configure("2") do |config|
       km.cpus=2
       km.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
-    
-# Configure kubeadmin init in master node.  
+
+# Configure synced folder on master nodes so some of work can be synced back to host.
+    master.vm.synced_folder "./kube-sandbox", "$HOME/kube-sandbox", type: "virtualbox"
+
+# Configure kubeadmin init in master node.
     master.vm.provision "kubeadm", type:"shell" do |kubeadm|
       kubeadm.privileged = false
       kubeadm.path = "kubeadm-init.sh"
-    end  
+    end
   end
 
 # Configure first nodes, the master node of kubernetes, name, network adapters and IP
-# and VM configuration of Memory and CPU, turn off Serial Ports   
+# and VM configuration of Memory and CPU, turn off Serial Ports
   config.vm.define "kube-node1" do |node1|
     node1.vm.hostname = "kubenode1"
 
@@ -47,13 +50,13 @@ Vagrant.configure("2") do |config|
       kn1.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
   end
-  
+
 # Configure first nodes, the master node of kubernetes, name, network adapters and IP
 # and VM configuration of Memory and CPU, turn off Serial Ports
   config.vm.define "kube-node2" do |node2|
     node2.vm.hostname = "kubenode2"
 
-    node2.vm.network "public_network", bridge: "Intel(R) I211 Gigabit Network Connection" 
+    node2.vm.network "public_network", bridge: "Intel(R) I211 Gigabit Network Connection"
     node2.vm.network "private_network", :name => "VirtualBox Host-Only Ethernet Adapter #3",:adapter => 3, :ip => "192.168.56.22"
 
     node2.vm.provider "virtualbox" do |kn2|
