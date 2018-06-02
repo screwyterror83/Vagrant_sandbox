@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
     end
 
 # Configure synced folder on master nodes so some of work can be synced back to host.
-    master.vm.synced_folder "./kube-sandbox", "$HOME/kube-sandbox", type: "virtualbox"
+    master.vm.synced_folder "./kube-sandbox", "/home/vagrant/kube-sandbox", type: "virtualbox"
 
 # Configure kubeadmin init in master node.
     master.vm.provision "kubeadm", type:"shell" do |kubeadm|
