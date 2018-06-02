@@ -8,4 +8,5 @@ kubernetes-vagrant/*.log
 
 #ignore files in sandbox
 !kubernetes-vagrant/kube-sandbox/README.md
+!kubernetes-vagrant/kube-sandbox/*.yml
 kubernetes-vagrant/kube-sandbox/*
