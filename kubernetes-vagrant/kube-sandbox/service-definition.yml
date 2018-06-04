@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80      #This is most important value in "service-definition", targetPort is default to same                   #port as 'port', and 'nodePort' value will be auto-assigned to a free port in range                    #between '30000 ~ 32767'
+      nodePort: 30008
+  selector:
+    app: myapp
+    type: front-end
