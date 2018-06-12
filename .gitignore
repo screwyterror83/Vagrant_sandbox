@@ -1,6 +1,8 @@
 #ignore .vagrant files
 kubernetes-vagrant/.vagrant
 kubernetes-vagrant/.vagrant/*
+nagios-vagrant/.vagrant
+nagios-vagrant/.vagrant/*
 
 #ignore log files
 *.log
