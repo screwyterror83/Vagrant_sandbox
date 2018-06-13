@@ -58,7 +58,7 @@ define host{
         retain_nonstatus_information    1       	; Retain non-status information across program restarts
 	notification_period		24x7		; Send host notifications at any time
         register                        0       	; DONT REGISTER THIS DEFINITION - ITS NOT A REAL HOST, JUST A TEMPLATE!
-        action_url nagiosgraph/cgi-bin/showhost.cgi?host=$HOSTNAME$
+        action_url  /nagiosgraph/cgi-bin/showhost.cgi?host=$HOSTNAME$
         }
 
 
@@ -172,7 +172,7 @@ define service{
         notification_interval           60			; Re-notify about service problems every hour
         notification_period             24x7			; Notifications can be sent out at any time
          register                        0       		; DONT REGISTER THIS DEFINITION - ITS NOT A REAL SERVICE, JUST A TEMPLATE!
-         action_url /nagiosgraph/cgi-bin/show.cgi?host=$HOSTNAME$&service=$SERVICEDESC$
+        action_url  /nagiosgraph/cgi-bin/show.cgi?host=$HOSTNAME$&service=$SERVICEDESC$
         }
 
 

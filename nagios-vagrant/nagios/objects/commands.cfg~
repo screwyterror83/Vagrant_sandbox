@@ -236,8 +236,6 @@ define command{
 	command_line	/usr/bin/printf "%b" "$LASTSERVICECHECK$\t$HOSTNAME$\t$SERVICEDESC$\t$SERVICESTATE$\t$SERVICEATTEMPT$\t$SERVICESTATETYPE$\t$SERVICEEXECUTIONTIME$\t$SERVICELATENCY$\t$SERVICEOUTPUT$\t$SERVICEPERFDATA$\n" >> /usr/local/nagios/var/service-perfdata.out
 	}
 
-
-# command to process nagios performance data for nagiosgraph
 define command {
   command_name process-service-perfdata-for-nagiosgraph
   command_line /usr/local/nagiosgraph/bin/insert.pl

@@ -31,6 +31,7 @@ cfg_file=/usr/local/nagios/etc/objects/contacts.cfg
 cfg_file=/usr/local/nagios/etc/objects/timeperiods.cfg
 cfg_file=/usr/local/nagios/etc/objects/templates.cfg
 cfg_file=/usr/local/nagios/etc/objects/main.cfg
+cfg_file=/usr/local/nagios/etc/objects/pagerduty_nagios.cfg
 
 # Definitions for monitoring the local (Linux) host
 cfg_file=/usr/local/nagios/etc/objects/localhost.cfg
@@ -695,7 +696,7 @@ retained_contact_service_attribute_mask=0
 # that each interval is one minute long (60 seconds).  Other settings
 # have not been tested much, so your mileage is likely to vary...
 
-interval_length=60
+interval_length=10
 
 
 
@@ -815,6 +816,7 @@ service_perfdata_file_template=$LASTSERVICECHECK$||$HOSTNAME$||$SERVICEDESC$||$S
 service_perfdata_file_mode=a
 service_perfdata_file_processing_interval=30
 service_perfdata_file_processing_command=process-service-perfdata-for-nagiosgraph
+
 
 
 # HOST AND SERVICE PERFORMANCE DATA PROCESSING COMMANDS
@@ -1352,3 +1354,6 @@ allow_empty_hostgroup_assignment=0
 #       jobs_min manually here or through the query handler interface that
 #       WILL affect your system
 #loadctl_options=jobs_max=100;backoff_limit=10;rampup_change=5
+
+
+command_check_interval=-1
